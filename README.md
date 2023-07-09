@@ -7,7 +7,7 @@ HitRate@5 > 0.6, average service time <= 0.5 sec, less than 4 GB RAM per launch
 model_training_v1.ipynb - first model with smaller number of components PCA, but additional features from users actions
 ROC-AUC: 0.69
 ACCURACY: 0.86
-HitRate@5: 0.6
+HitRate@5: 0.605
 
 2 * Postgres, pandas, sklearn, catboost
 
