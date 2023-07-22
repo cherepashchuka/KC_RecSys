@@ -11,8 +11,8 @@ from catboost import CatBoostClassifier
 from loguru import logger
 
 
-CONTROL_MODEL_PATH = 'kc_project_rec_system_cb_model_control'
-TEST_MODEL_PATH = 'kc_project_rec_system_cb_model_test'
+CONTROL_MODEL_PATH = 'kc_project_rec_system_cb_model_control.pkl'
+TEST_MODEL_PATH = 'kc_project_rec_system_cb_model_test.pkl'
 
 
 def get_model_path(type: str) -> str:
