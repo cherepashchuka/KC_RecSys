@@ -38,10 +38,10 @@ Service for working with the recommendation system via API. Implemented the poss
 
 Postgres, pandas, FastAPI
 ```
-.\
-├── config.json             # Config file with constants such a database url, salt and models path\
-├── data_funcs.py           # Support functions for working with data\
-├── model_funcs.py          # Support functions for working with models\
-├── schema.py               # Response model schema\
+.
+├── config.json             # Config file with constants such a database url, salt and models path
+├── data_funcs.py           # Support functions for working with data
+├── model_funcs.py          # Support functions for working with models
+├── schema.py               # Response model schema
 └── app.py                  # Main service
 ```
