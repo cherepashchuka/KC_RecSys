@@ -36,7 +36,7 @@ HitRate@5: 0.576
 
 Service for working with the recommendation system via API. Implemented the possibility of A/B testing of new models and dividing users into test and control groups
 
-Postgres, pandas, FastAPI
+Postgres, pandas, FastAPI, pydantic
 ```
 .
 ├── config.json             # Config file with constants such a database url, salt and models path
