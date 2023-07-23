@@ -18,9 +18,9 @@ Second model with features from PCA and more number of components(100)
 
 Postgres, pandas, sklearn, catboost
 
-ROC-AUC: 0.65\
-ACCURACY: 0.86\
-HitRate@5: 0.616
+**ROC-AUC:** 0.65\
+**ACCURACY:** 0.86\
+**HitRate@5:** 0.616
 
 ## 3 * model training\model_training_v3.ipynb, get_embeddings.ipynb
 
@@ -28,9 +28,9 @@ Third model with embeddings from bert model
 
 Postgres, pandas, sklearn, catboost, pytorch, bert
 
-ROC-AUC: 0.62\
-ACCURACY: 0.88\
-HitRate@5: 0.576
+**ROC-AUC:** 0.62\
+**ACCURACY:** 0.88\
+**HitRate@5:** 0.576
 
 ## 4 * app.py
 
