@@ -2,20 +2,17 @@
 Support functions for working with data:
 load_features - loading large amount of data from sql db (Postgres in this project)
 get_exp_group - assigning exp group to users
+process_features - brings all the features into the desired form for the model
 """
 
 import pandas as pd
 import hashlib
+import json
 from sqlalchemy import create_engine
 from datetime import datetime
 from loguru import logger
 
-
-SALT = 'justwmodel'
-PERCENT_CONST_1 = 50
-PERCENT_CONST_2 = 100
-CHUNKSIZE = 200000  # size of one chunk
-DATABASE_URL = "##"  # your url for connection to db, in this project this data is hidden
+config = json.load(open(file="./config.json", encoding="utf-8"))
 
 
 def load_features(query: str) -> pd.DataFrame:
@@ -23,10 +20,10 @@ def load_features(query: str) -> pd.DataFrame:
     :param query: sql-query for downloading your data
     :return: pandas dataframe with data which was received after execute your sql query
     """
-    engine = create_engine(DATABASE_URL)
+    engine = create_engine(config['database_url'])
     conn = engine.connect().execution_options(stream_results=True)
     chunks = []
-    for chunk_dataframe in pd.read_sql(query, conn, chunksize=CHUNKSIZE):
+    for chunk_dataframe in pd.read_sql(query, conn, chunksize=config['chunksize']):
         chunks.append(chunk_dataframe)
         logger.info(f"got chunk: {len(chunk_dataframe)}")
     conn.close()
@@ -38,11 +35,11 @@ def get_exp_group(id: int) -> str:
     :param id: id of the user to whom we want to assign the group
     :return: assigned user group
     """
-    value_str = str(id) + SALT
+    value_str = str(id) + config['salt']
     percent = int(hashlib.md5(value_str.encode()).hexdigest(), 16) % 100
-    if percent < PERCENT_CONST_1:
+    if percent < config['percent_1']:
         return "control"
-    elif percent < PERCENT_CONST_2:
+    elif percent < config['percent_2']:
         return "test"
     return "unknown"
 

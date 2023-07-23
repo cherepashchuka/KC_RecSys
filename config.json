@@ -1,0 +1,13 @@
+{
+  "query_users": "SELECT * FROM public.user_data",
+  "query_posts_t": "SELECT * FROM public.a_cherepaschuk_post_features_v4_main_lesson_22",
+  "query_posts_c": "SELECT * FROM public.a_cherepaschuk_post_features_main_lesson_22",
+  "query_liked_posts": "SELECT DISTINCT post_id, user_id FROM public.feed_data WHERE action = 'like'",
+  "control_model_path": "./kc_project_rec_system_cb_model_control.pkl",
+  "test_model_path": "./kc_project_rec_system_cb_model_test.pkl",
+  "salt": "justwmodel",
+  "percent_1": 50,
+  "percent_2": 100,
+  "chunksize": 200000,
+  "database_url": "###"
+}

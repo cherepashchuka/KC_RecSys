@@ -5,14 +5,13 @@ load_models - loading test and control models
 get_recs - get recommendations for specific user
 """
 
+import json
 import pandas as pd
 from schema import PostGet, Response
 from catboost import CatBoostClassifier
 from loguru import logger
 
-
-CONTROL_MODEL_PATH = 'kc_project_rec_system_cb_model_control.pkl'
-TEST_MODEL_PATH = 'kc_project_rec_system_cb_model_test.pkl'
+config = json.load(open(file="./config.json", encoding="utf-8"))
 
 
 def get_model_path(type: str) -> str:
@@ -21,11 +20,11 @@ def get_model_path(type: str) -> str:
     :return: string with path to the required model
     """
     if type == 'control':
-        MODEL_PATH = CONTROL_MODEL_PATH
+        MODEL_PATH = config['control_model_path']
     elif type == 'test':
-        MODEL_PATH = TEST_MODEL_PATH
+        MODEL_PATH = config['test_model_path']
     else:
-        MODEL_PATH = CONTROL_MODEL_PATH
+        MODEL_PATH = config['control_model_path']
     return MODEL_PATH
 
 
