@@ -9,5 +9,5 @@
   "percent_1": 50,
   "percent_2": 100,
   "chunksize": 200000,
-  "database_url": "###"
+  "database_url": "#"
 }

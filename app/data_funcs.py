@@ -12,7 +12,7 @@ from sqlalchemy import create_engine
 from datetime import datetime
 from loguru import logger
 
-config = json.load(open(file="./config.json", encoding="utf-8"))
+config = json.load(open(file="config.json", encoding="utf-8"))
 
 
 def load_features(query: str) -> pd.DataFrame:

@@ -11,7 +11,7 @@ from schema import PostGet, Response
 from catboost import CatBoostClassifier
 from loguru import logger
 
-config = json.load(open(file="./config.json", encoding="utf-8"))
+config = json.load(open(file="config.json", encoding="utf-8"))
 
 
 def get_model_path(type: str) -> str:

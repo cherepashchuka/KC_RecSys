@@ -32,16 +32,17 @@ Postgres, pandas, sklearn, catboost, pytorch, bert
 **ACCURACY:** 0.88\
 **HitRate@5:** 0.576
 
-## 4 * app.py
+## 4 * app
 
-Service for working with the recommendation system via API. Implemented the possibility of A/B testing of new models and dividing users into test and control groups
-
-Postgres, pandas, FastAPI, pydantic
+Service for working with the recommendation system via API. Implemented the possibility of A/B testing of new models and dividing users into test and control groups.\
+Also created a docker image to deliver and run the service.\
+\
+Postgres, Docker, pandas, FastAPI, pydantic
 ```
 .
 ├── config.json             # Config file with constants such a database url, salt and models path
 ├── data_funcs.py           # Support functions for working with data
 ├── model_funcs.py          # Support functions for working with models
 ├── schema.py               # Response model schema
-└── app.py                  # Main service
+└── main.py                 # Main service
 ```
