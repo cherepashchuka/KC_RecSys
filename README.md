@@ -8,9 +8,9 @@ First model with smaller number of components PCA, but additional features from 
 
 Postgres, pandas, sklearn, catboost
 
-ROC-AUC: 0.69\
-ACCURACY: 0.86\
-HitRate@5: 0.605
+**ROC-AUC:** 0.69\
+**ACCURACY:** 0.86\
+**HitRate@5:** 0.605
 
 ## 2 * model training\model_training_v2.ipynb
 
