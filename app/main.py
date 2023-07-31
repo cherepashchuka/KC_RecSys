@@ -14,21 +14,22 @@ app = FastAPI()
 logger.info('loading features')
 
 logger.info('loading all_users_features')
-all_users_features = load_features(config['query_users'])  # loading features for all users from postgresql db
+all_users_features = load_features(config['query_users'])  # loading features for all users from postgresql db.
 
 logger.info('loading all_posts_features TEST')
-all_posts_features_t = load_features(config['query_posts_t']).drop('index', axis=1)  # loading prepared new features for test model
+all_posts_features_t = load_features(config['query_posts_t']).drop('index', axis=1)  # loading prepared new features
+# for test model.
 
 logger.info('loading all_posts_features CONTROL')
-all_posts_features_c = load_features(config['query_posts_c'])  # loading prepared features for control model
+all_posts_features_c = load_features(config['query_posts_c'])  # loading prepared features for control model.
 
-# in order not to make another request, just take the columns we need from the already downloaded data
+# in order not to make another request, just take the columns we need from the already downloaded data.
 content = all_posts_features_c[['post_id', 'text', 'topic']]
 
 all_posts_features_c = all_posts_features_c.drop(['text', 'index'], axis=1)
 
 logger.info('loading all_liked_posts')
-all_liked_posts = load_features(config['query_liked_posts'])  # loading all posts that have been liked
+all_liked_posts = load_features(config['query_liked_posts'])  # loading all posts that have been liked.
 
 logger.info('loading models')
 model_test = load_model('test')
@@ -42,13 +43,13 @@ def recommended_posts(
         id: int,
         time: datetime,
         limit: int = 10) -> Response:
-    # let's show the requester a more informative error if the user with such a user_id does not exist
+    # let's show the requester a more informative error if the user with such a user_id does not exist.
     if id not in all_users_features['user_id'].values:
         raise HTTPException(404, 'user does not exist')
 
     exp_group = get_exp_group(id)
 
-    # from the previously loaded data form a pandas dataframe for prediction and select a model based on the user group
+    # from the previously loaded data form a pandas dataframe for prediction and select a model based on the user group.
     if exp_group == 'control':
         model = model_control
         user_posts = process_features(id, time, all_users_features, all_posts_features_c, all_liked_posts)

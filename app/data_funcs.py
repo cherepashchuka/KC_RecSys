@@ -1,8 +1,8 @@
 """
 Support functions for working with data:
-load_features - loading large amount of data from sql db (Postgres in this project)
-get_exp_group - assigning exp group to users
-process_features - brings all the features into the desired form for the model
+load_features - loading large amount of data from sql db (Postgres in this project).
+get_exp_group - assigning exp group to users.
+process_features - brings all the features into the desired form for the model.
 """
 
 import pandas as pd
@@ -17,8 +17,8 @@ config = json.load(open(file="config.json", encoding="utf-8"))
 
 def load_features(query: str) -> pd.DataFrame:
     """
-    :param query: sql-query for downloading your data
-    :return: pandas dataframe with data which was received after execute your sql query
+    :param query: sql-query for downloading your data.
+    :return: pandas dataframe with data which was received after execute your sql query.
     """
     engine = create_engine(config['database_url'])
     conn = engine.connect().execution_options(stream_results=True)
@@ -32,8 +32,8 @@ def load_features(query: str) -> pd.DataFrame:
 
 def get_exp_group(id: int) -> str:
     """
-    :param id: id of the user to whom we want to assign the group
-    :return: assigned user group
+    :param id: id of the user to whom we want to assign the group.
+    :return: assigned user group.
     """
     value_str = str(id) + config['salt']
     percent = int(hashlib.md5(value_str.encode()).hexdigest(), 16) % 100

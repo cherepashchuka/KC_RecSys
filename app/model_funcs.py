@@ -1,8 +1,8 @@
 """
 Support functions for working with models:
-get_model_path - assigning a path depending on the type of model: test or control
-load_models - loading test and control models
-get_recs - get recommendations for specific user
+get_model_path - assigning a path depending on the type of model: test or control.
+load_models - loading test and control models.
+get_recs - get recommendations for specific user.
 """
 
 import json
@@ -16,8 +16,8 @@ config = json.load(open(file="config.json", encoding="utf-8"))
 
 def get_model_path(type: str) -> str:
     """
-    :param type: model type - control or test
-    :return: string with path to the required model
+    :param type: model type - control or test.
+    :return: string with path to the required model.
     """
     if type == 'control':
         MODEL_PATH = config['control_model_path']
@@ -30,8 +30,8 @@ def get_model_path(type: str) -> str:
 
 def load_model(type: str):
     """
-    :param type: model type - control or test
-    :return: loaded catboost model
+    :param type: model type - control or test.
+    :return: loaded catboost model.
     """
     model_path = get_model_path(type)
     loaded_model = CatBoostClassifier()
@@ -41,12 +41,12 @@ def load_model(type: str):
 
 def get_recs(limit: int, user_posts: pd.DataFrame, content: pd.DataFrame, model, exp_group: str) -> Response:
     """
-    :param limit: number of recommendations
-    :param user_posts: combined pandas dataframe with users and posts
-    :param content: all available posts
-    :param model: loaded model
-    :param exp_group: user test group
-    :return: requested number of recommendations
+    :param limit: number of recommendations.
+    :param user_posts: combined pandas dataframe with users and posts.
+    :param content: all available posts.
+    :param model: loaded model.
+    :param exp_group: user test group.
+    :return: requested number of recommendations.
     """
     logger.info("predicting")
     user_posts['predict'] = model.predict_proba(user_posts)[:, 1]
