@@ -1,4 +1,5 @@
-# KC_RecSys
+# Recommendation system project.
+![Preview](rep_images/preview.png)
 Recommendation system for the social network of students.
 Average service time <= 0.5 sec, less than 4 GB RAM per launch.
 
